@@ -1,11 +1,11 @@
-** Exploratory Data Analysis - Course Project 2 **
+## Exploratory Data Analysis - Course Project 2 
 
-Introduction
+ ## Introduction
 Fine particulate matter (PM2.5) is an ambient air pollutant for which there is strong evidence that it is harmful to human health. In the United States, the Environmental Protection Agency (EPA) is tasked with setting national ambient air quality standards for fine PM and for tracking the emissions of this pollutant into the atmosphere. Approximatly every 3 years, the EPA releases its database on emissions of PM2.5. This database is known as the National Emissions Inventory (NEI). You can read more information about the NEI at the EPA National Emissions Inventory web site.
 
 For each year and for each type of PM source, the NEI records how many tons of PM2.5 were emitted from that source over the course of the entire year. The data that you will use for this assignment are for 1999, 2002, 2005, and 2008.
 
-Data
+## Data
 The data for this assignment are available from the course web site as a single zip file:
 
 Data for Peer Assessment [29Mb]
@@ -35,10 +35,10 @@ NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 as long as each of those files is in your current working directory (check by calling dir() and see if those files are in the listing).
 
-Assignment
+## Assignment
 The overall goal of this assignment is to explore the National Emissions Inventory database and see what it say about fine particulate matter pollution in the United states over the 10-year period 1999–2008. You may use any R package you want to support your analysis.
 
-Making and Submitting Plots
+## Making and Submitting Plots
 For each plot you should
 
 Construct the plot and save it to a PNG file.
@@ -66,7 +66,7 @@ SCC <- readRDS("Source_Classification_Code.rds")
 Questions
 You must address the following questions and tasks in your exploratory analysis. For each question/task you will need to make a single plot. Unless specified, you can use any plotting system in R to make your plot.
 
-Question 1
+## Question 1
 First we'll aggregate the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
 
 aggTotals <- aggregate(Emissions ~ year,NEI, sum)
@@ -85,7 +85,7 @@ As we can see from the plot, total emissions have decreased in the US from 1999 
 
 plot of plot1.png
 
-Question 2
+## Question 2
 First we aggregate total emissions from PM2.5 for Baltimore City, Maryland (fips="24510") from 1999 to 2008.
 
 baltimoreNEI <- NEI[NEI$fips=="24510",]
@@ -105,7 +105,7 @@ Overall total emissions from PM2.5 have decreased in Baltimore City, Maryland fr
 
 plot of plot2.png
 
-Question 3
+## Question 3
 Using the ggplot2 plotting system,
 
 library(ggplot2)
@@ -128,7 +128,7 @@ The point source saw a slight increase overall from 1999-2008. Also note that th
 
 plot of plot3.png
 
-Question 4
+## Question 4
 First we subset coal combustion source factors NEI data.
 
 # Subset coal combustion related NEI data
@@ -156,7 +156,7 @@ Eg. Emissions from coal combustion related sources have decreased by about 1/3 f
 
 plot of plot4.png
 
-Question 5
+## Question 5
 First we subset the motor vehicles, which we assume is anything like Motor Vehicle in SCC.Level.Two.
 
 vehicles <- grepl("vehicle", SCC$SCC.Level.Two, ignore.case=TRUE)
@@ -181,7 +181,7 @@ How have emissions from motor vehicle sources changed from 1999–2008 in Baltim
 
 Emissions from motor vehicle sources have dropped from 1999-2008 in Baltimore City!
 
-Question 6
+## Question 6
 Comparing emissions from motor vehicle sources in Baltimore City (fips == "24510") with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"),
 
 vehiclesBaltimoreNEI <- vehiclesNEI[vehiclesNEI$fips == 24510,]
